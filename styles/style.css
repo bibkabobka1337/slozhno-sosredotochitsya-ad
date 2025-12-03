@@ -1,5 +1,291 @@
-/* Основные стили проекта. Это стили для темы, которую вы верстаете первой. */
-
 .page {
-  /* сохраните в разметке и стилях класс page у тега body. Он удобен, чтобы составлять селекторы для разных цветовых тем. */
+  background-color: var(--color-bg-main);
+  background-image: var(--bg-image);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  background-attachment: fixed;
+  min-block-size: 100vb;
+  font-family: var(--font-family-main);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+}
+
+.decorated-zone {
+  position: relative;
+}
+
+.decorated-zone::before {
+  content: "";
+  position: absolute;
+  inset-block-start: var(--decor-corner-offset);
+  inset-inline-end: var(--decor-corner-offset);
+  border-block-start: 1px solid var(--color-accent);
+  border-inline-end: 1px solid var(--color-accent);
+  inline-size: var(--decor-corner-size);
+  block-size: var(--decor-corner-size);
+}
+
+.decorated-zone::after {
+  content: "";
+  position: absolute;
+  inset-block-end: var(--decor-corner-offset);
+  inset-inline-start: var(--decor-corner-offset);
+  border-block-end: 1px solid var(--color-accent);
+  border-inline-start: 1px solid var(--color-accent);
+  inline-size: var(--decor-corner-size);
+  block-size: var(--decor-corner-size);
+}
+
+.header__label {
+  position: absolute;
+  inset-block-start: var(--container-padding);
+  inset-inline-end: calc(var(--container-padding) + 28px);
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--color-accent);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: 1.39;
+  text-transform: uppercase;
+}
+
+.header__label::after {
+  content: "";
+  inline-size: 9px;
+  block-size: 9px;
+  border-radius: 50%;
+  background-color: var(--color-accent);
+  box-shadow: 0 0 4px var(--color-accent);
+}
+
+.header {
+  display: grid;
+  grid-template-rows: 1fr min-content 1fr;
+  align-items: center;
+  padding: var(--container-padding);
+  min-block-size: clamp(668px, 100vb, 100vb);
+}
+
+.header__theme-menu {
+  justify-self: end;
+  align-self: center;
+}
+
+.header__theme-menu-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--gap-items);
+}
+
+.header__theme-menu-button {
+  padding: 1px 13px;
+  border: 1px solid transparent;
+  color: var(--color-accent);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-regular);
+  font-size: var(--font-size-base);
+  line-height: 1;
+  text-transform: lowercase;
+  background-color: transparent;
+  transition: border-color 0.3s ease;
+}
+
+.header__theme-menu-button:hover {
+  border-color: var(--color-accent-transparent);
+}
+
+.header__theme-menu-button:focus {
+  outline: none;
+}
+
+.header__theme-menu-button:focus-visible {
+  outline: none;
+  border-block-end: 1px solid var(--color-accent);
+}
+
+.header__theme-menu-button_active {
+  border-color: var(--color-accent);
+  pointer-events: none;
+}
+
+.title {
+  color: var(--color-primary);
+  font-family: var(--font-family-main);
+  font-weight: var(--font-weight-bold);
+  line-height: 0.825;
+}
+
+.header__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: 4px 4px 0 var(--color-decor);
+}
+
+.title-decor {
+  background-color: var(--color-decor);
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-bold);
+}
+
+.header__description {
+  justify-self: end;
+  align-self: center;
+  max-inline-size: 50%;
+}
+
+.content {
+  display: grid;
+  gap: var(--section-gap);
+  padding: 40px var(--container-padding);
+}
+
+.section {
+  display: grid;
+  gap: 20px;
+}
+
+.section__header {
+  color: var(--color-accent);
+  font-weight: var(--font-weight-bold);
+}
+
+.section__article-list {
+  display: grid;
+  gap: 20px;
+}
+
+.article {
+  display: grid;
+  gap: var(--gap-items);
+}
+
+.article__header {
+  color: var(--color-text-secondary);
+  background-color: var(--color-decor);
+  font-weight: var(--font-weight-bold);
+}
+
+.article__text {
+  color: var(--color-text-main);
+  font-weight: var(--font-weight-regular);
+}
+
+.research-link {
+  text-decoration: none;
+  text-shadow: 2px 2px 0 var(--color-decor);
+  transition: border-color 0.3s ease;
+}
+
+.research-link:hover {
+  border-block-end: 1px solid currentColor;
+}
+
+.research-link:focus {
+  outline: none;
+}
+
+.research-link:focus-visible {
+  outline: 1px solid currentColor;
+}
+
+.article__images {
+  display: grid;
+  gap: var(--container-padding);
+}
+
+.article__images-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.footer {
+  display: grid;
+  place-items: center;
+  padding: var(--container-padding);
+  min-block-size: clamp(668px, 100vb, 100vb);
+}
+
+.footer__title {
+  font-size: clamp(7.25rem, 7.0115rem + 1.0178vw, 7.5rem);
+  text-shadow: 2px 2px 0 var(--color-decor);
+}
+
+@media (width >= 768px) {
+  .content {
+    padding: 60px var(--container-padding);
+  }
+  
+  .header__title {
+    margin-inline-start: -20px;
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+  
+  .why,
+  .how {
+    grid-template-columns: 1fr 2fr;
+  }
+  
+  .section__header {
+    grid-column: 1;
+  }
+  
+  .section__article-list {
+    grid-column: 2;
+  }
+  
+  .what .section__header {
+    inline-size: calc(100% / 3 - 20px);
+  }
+  
+  .what .section__article-list {
+    grid-column: 1 / -1;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .article__images {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+  }
+  
+  .article__images-image:first-child {
+    grid-column: span 2;
+  }
+  
+  .article__images-image:nth-child(2) {
+    grid-row: span 2;
+  }
+  
+  .article__images-image:nth-child(3) {
+    grid-row: span 2;
+  }
+  
+  .article__images-image:nth-child(5) {
+    grid-column: 2 / 4;
+    grid-row: 3;
+  }
+  
+  .footer__title {
+    font-size: clamp(7.5rem, 0.5625rem + 14.4531vw, 9.8125rem);
+  }
+}
+
+@media (width >= 1024px) {
+  .header__theme-menu {
+    justify-self: center;
+    align-self: start;
+  }
+  
+  .header__theme-menu-list {
+    flex-direction: row;
+  }
+  
+  .why,
+  .how {
+    grid-template-columns: calc((100% - 40px) / 3) 1fr;
+  }
 }
